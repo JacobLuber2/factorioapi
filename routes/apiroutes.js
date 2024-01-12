@@ -18,14 +18,15 @@ router.get("/:id?", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   let factorioData = req.body;
-  let data = await factorio.AddOne(factorioData);
+  let data = await factorio.AddOne(factorioData, req.method);
   res.json(data);
 });
 
 router.put("/:id", async (req, res, next) => {
   const { id } = req.params;
   let updatedData = req.body;
-  const data = await factorio.update(id, updatedData);
+  const data = await factorio.update(updatedData, id);
+  res.json(data);
 
 });
 

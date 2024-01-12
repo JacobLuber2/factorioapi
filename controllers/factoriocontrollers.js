@@ -16,13 +16,13 @@ export const AddOne = async (factorio, requesttype) => {
         return await query("INSERT INTO factorio (terrains, requesttype) VALUES (?, ?)", [factorio.terrains, requesttype]);
     }
 };
-export const update = async (factorio) => {
-    if (factorio.items) {
-        const result = await query("UPDATE factorio SET items = ? WHERE id = ?", [factorio.items, factorio.id]);
-        if (result.affectedRows === 1) {
+export const update = async (factorio, id) => {
+   // if (factorio.items) {
+        const result = await query("UPDATE factorio SET ? WHERE id = ?", [factorio, id]);
+       // if (result.affectedRows === 1) {
             return { message: "Update successful" };
-        }
-    } 
+       // }
+  //  } 
 };
 
 export const remove = async (id) => {
